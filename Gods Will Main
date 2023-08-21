@@ -390,6 +390,13 @@ Groups.Misc:AddButton('Collect All Coins', function()
 		UI:Notify('Collecting coins, please wait.', 1)
 	end
 end)
+Groups.Misc:AddButton('Get All Cosmetics', function()
+	for i,v in pairs(game.Players.LocalPlayer:GetChildren()) do
+    		if v:IsA("Accessory") then
+        		game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Cosmetics"):FireServer(v.Name)
+    		end
+	end
+end)
 Groups.Misc:AddButton('Fix Speed', function()
 	pcall(function()
 		client.Character.Humanoid.WalkSpeed = tonumber(getGlobalWalkSpeed())
